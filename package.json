@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@mdxeditor/editor": "^3.53.1"
+  }
+}
