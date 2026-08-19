@@ -1,0 +1,89 @@
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-blue);
+  padding: 0px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* max-width: 70vw; */
+  background-color: var(--color-blue);
+  display: flex;
+  align-items: center;
+  /* gap: 12px; */
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+}
+
+.header .logo {
+  font-size: 28px;
+  font-weight: 800;
+  /* height: 100px; */
+  width: 10vw;
+  /* margin-left: 2%; */
+  /* margin-bottom: 1vh; */
+  letter-spacing: 0.5px;
+  color: var(--color-navy);
+}
+
+.header .logo span {
+  color: var(--color-pink);
+}
+
+.header .app-title {
+  font-size: 100%;
+  font-weight: 500;
+  color: var(--color-white);
+  /* border-left: 1px solid rgba(255, 255, 255, 0.4); */
+  /* padding-left: 12px; */
+  /* margin-left: 4px; */
+  padding-top: 2vh;
+}
+
+
+/* ==========================================================================
+   Logout
+   ========================================================================== */
+
+.btn-logout {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--color-pink);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-logout:hover {
+  background-color: var(--color-pink-dark);
+}
+
+.btn-logout:active {
+  transform: scale(0.98);
+}
+
+
+
+
+.main-content {
+  flex: 1;
+  /* padding: 40px 32px; */
+}
+

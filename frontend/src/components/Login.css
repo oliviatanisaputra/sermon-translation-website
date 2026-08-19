@@ -1,0 +1,108 @@
+
+/* ==========================================================================
+   Login Page
+   ========================================================================== */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 32px;
+}
+
+.login-card {
+  background-color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 32px 40px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.login-card h2 {
+  color: var(--color-white);
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: 14px;
+  background-color: var(--color-white);
+  color: var(--color-text);
+}
+
+.login-card input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.login-card input:focus {
+  outline: 2px solid var(--color-blue);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--color-blue-dark);
+}
+
+.btn-login:active {
+  transform: scale(0.98);
+}
+
+.guest-access {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.guest-access h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.guest-access p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+.btn-guest {
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--color-pink);
+  color: var(--color-navy);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-guest:hover {
+  background-color: var(--color-pink-dark);
+}
+
+.btn-guest:active {
+  transform: scale(0.98);
+}

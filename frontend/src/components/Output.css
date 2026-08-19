@@ -1,0 +1,303 @@
+
+/* ==========================================================================
+   New / Edit Sermon Page
+   ========================================================================== */
+
+.editor-page {
+  max-width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.upload-row label {
+  font-weight: 600;
+  font-size: 15px;
+  min-width: 130px;
+}
+
+.btn-upload {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-upload:hover {
+  background-color: var(--color-pink);
+}
+
+.paste-label {
+  /* font-weight: 600; */
+  font-size: 15px;
+  /* margin: 12px 0 8px 0; */
+  /* padding: 5%; */
+}
+
+.sermon-textarea {
+  min-height: 20vh;
+  width: 80vw;
+  max-width: 80vw;
+  border: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  margin: 20px;
+  box-shadow: 4px 2px 8px 2px rgba(0, 0, 0, 0.20);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  text-align: left;
+  margin-bottom: 20px;
+  background-color: var(--color-white);
+  /* align-self: center; */
+}
+
+
+.sermon-textarea::placeholder {
+  color: var(--color-placeholder);
+}
+
+.sermon-textarea:focus {
+  outline: 2px solid var(--color-blue);
+  border-color: transparent;
+}
+
+.translate-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.btn-translate {
+  padding: 10px 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-translate:hover {
+  background-color: var(--color-pink);
+}
+
+.btn-translate:active {
+  transform: scale(0.98);
+}
+
+.btn-translate:disabled {
+  background-color: var(--color-placeholder);
+  cursor: not-allowed;
+}
+
+/* Rich text editor block */
+
+.editor-block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-white);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #F2F3F5;
+  border-bottom: 1px solid var(--color-border);
+  padding: 8px 12px;
+}
+
+.editor-toolbar button.icon-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--color-text-light);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.editor-toolbar button.icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: var(--color-text);
+}
+
+.editor-toolbar button.icon-btn:disabled {
+  color: var(--color-placeholder);
+  cursor: default;
+}
+
+.editor-toolbar select.block-type {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  font-size: 13px;
+  color: var(--color-text-light);
+}
+
+.editor-toolbar .divider {
+  width: 1px;
+  height: 18px;
+  background-color: var(--color-border);
+  margin: 0 4px;
+}
+
+.editor-toolbar .format-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+.editor-toolbar .format-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.editor-toolbar .format-btn.bold {
+  font-weight: 700;
+}
+
+.editor-toolbar .format-btn.italic {
+  font-style: italic;
+}
+
+.editor-toolbar .format-btn.underline {
+  text-decoration: underline;
+}
+
+.editor-content {
+  flex: 1;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
+  overflow-y: auto;
+}
+
+.editor-content:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-placeholder);
+}
+
+/* Title / Date / Save */
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 20px; */
+  margin:0;
+  padding: 0;
+  gap: 8px;
+}
+
+.form-row label {
+  min-width: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  align-content: center;
+}
+
+.form-row input {
+  flex: 1;
+  max-width: 320px;
+  padding: 9px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  background-color: var(--color-white);
+}
+
+.form-row input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.form-row input:focus {
+  outline: 2px solid var(--color-blue);
+  border-color: transparent;
+}
+
+.save-row {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 28px; */
+  margin-bottom: 28px;
+  padding: 0;
+}
+
+.btn-save {
+  padding: 10px 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-save:hover {
+  background-color: var(--color-pink);
+}
+
+.btn-save:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 24px 16px;
+  }
+
+  .sermon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .upload-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row input {
+    max-width: 100%;
+    width: 100%;
+  }
+}
