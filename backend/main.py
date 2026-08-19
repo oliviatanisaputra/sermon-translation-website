@@ -6,9 +6,11 @@ import requests
 import json
 import sqlite3
 from datetime import datetime
-from ollama import chat
+from ollama import chat, Client
+from pwdlib import PasswordHash
 
-
+remote_server_ip = '100.91.27.76'
+client = Client(host = f'http://{remote_server_ip}:11434')
 
 # create the FastAPI app
 app = FastAPI()
@@ -28,6 +30,10 @@ app.add_middleware(
 
 
 # client = genai.Client()
+
+
+
+password_hash = PasswordHash.recommended()
 
 
 
@@ -78,14 +84,19 @@ def login(data: LoginInput):
     username = data.username
     password = data.password
 
+    # Hash the provided password
+    hashed_password = password_hash.hash(password)
+
     # connect to the database (connect + cursor)
     db_connection = get_db_connection()
     db_cursor = db_connection.cursor()
 
     # check if user exists
-    db_cursor.execute("SELECT * FROM USERS WHERE username = ? AND password = ?", (username, password))
+    db_cursor.execute("SELECT password FROM USERS WHERE username = ?", (username,))
     # WHERE: filter data berdasarkan sebuah kondisi, cuma return data kalau TRUE, kalau FALSE gak return data
     user = db_cursor.fetchone() # fetchone: ambil satu data yang paling atas
+
+    is_valid = password_hash.verify(password, user[0])
 
     # close the connection
     db_connection.close()
@@ -177,7 +188,7 @@ def translate_sermon(data: SermonInput):
 
             messages = [{'role': 'user', 'content': prompt}]
 
-            response = chat(model='translategemma:4b', messages=messages)
+            response = client.chat(model='translategemma:12b', messages=messages)
 
             results.append(response['message']['content'])
 
@@ -185,7 +196,14 @@ def translate_sermon(data: SermonInput):
             return {
                 "error": f"Translation failed: {str(e)}"
             }
-        
+
+
+        # connect to the database (connect + cursor)
+        db_connection = get_db_connection()
+        db_cursor = db_connection.cursor()
+
+        db_connection.commit()
+        db_cursor.executemany("INSERT INTO sermons (title, date, content, created_by, last_edited) VALUES (?, ?, ?, ?, ?)", ("untitled", "0000-00-00", results[0], "person", "0000-00-00 00:00:00"))
 
     return {
         "translated_text": {

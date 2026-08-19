@@ -15,7 +15,7 @@ db_cursor = db_connection.cursor()
 # === DROP TABLES IF EXISTS ===
 
 # try:
-#     db_cursor.execute(f"DROP TABLE IF EXISTS sermons")
+#     db_cursor.execute(f"DROP TABLE IF EXISTS users")
 #     print(f"Table 'users' dropped successfully, if it existed.")
 # except sqlite3.Error as e:
 #     print(f"An error occurred: {e}")
@@ -59,13 +59,13 @@ db_cursor.execute(sermons_table)
 # === INSERT USERS ===
 
 new_users = [
-#     ('lipp', 'hahaha'),
-#     ('isong', 'huhu'),
-#     ('cici', 'caca')
+    # ('olivia', '$argon2id$v=19$m=65536,t=3,p=4$n0c7oCYQAYZXO13mJdE9Lw$bSssaBSaTWxV8Fzu0kdWv77m9wWB1C7PJuZfr+xVw5A'),
+    # ('yeesong', '$argon2id$v=19$m=65536,t=3,p=4$JUu40IZiFsjrVIgLiXFrng$rU01oDJmIMUA/UuSieqSXsoZGcfestdFWtEEi/FZV9o'),
 ]
 # commit: commit/submit the changes to the database
 db_connection.commit()
 db_cursor.executemany("INSERT INTO users (username, password) VALUES (?, ?)", new_users)
+
 
 
 # === INSERT SERMONS ===
