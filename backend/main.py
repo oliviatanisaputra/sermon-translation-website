@@ -159,7 +159,7 @@ def translate_sermon(data: SermonInput):
             # response = requests.post(
             #     url="https://openrouter.ai/api/v1/chat/completions",
             #     headers={
-            #         "Authorization": "Bearer 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",
+            #         "Authorization": "",
             #         "Content-Type": "application/json",
             #     },
             #     data=json.dumps({
