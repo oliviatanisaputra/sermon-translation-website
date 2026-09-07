@@ -52,6 +52,7 @@ function InputSermon({ setResult, username, koreanText, setKoreanText, translate
             setState("");
             const data = await response.json();
             console.log("Translation response:", data);
+
             if (data.error) {
                 alert("Translation failed: " + data.error);
                 return;

@@ -56,6 +56,10 @@ class SermonTranslation(BaseModel):
     content: str
     created_by: str
 
+class SermonUpdate(BaseModel):
+    content: str
+
+
 sermons_db = []
 
 
@@ -199,11 +203,11 @@ def translate_sermon(data: SermonInput):
 
 
         # connect to the database (connect + cursor)
-        db_connection = get_db_connection()
-        db_cursor = db_connection.cursor()
+        # db_connection = get_db_connection()
+        # db_cursor = db_connection.cursor()
 
-        db_connection.commit()
-        db_cursor.executemany("INSERT INTO sermons (title, date, content, created_by, last_edited) VALUES (?, ?, ?, ?, ?)", ("untitled", "0000-00-00", results[0], "person", "0000-00-00 00:00:00"))
+        # db_connection.commit()
+        # db_cursor.executemany("INSERT INTO sermons (title, date, content, created_by, last_edited) VALUES (?, ?, ?, ?, ?)", ("untitled", "0000-00-00", results[0], "person", "0000-00-00 00:00:00"))
 
     return {
         "translated_text": {
@@ -319,6 +323,31 @@ def create_sermon(data: SermonTranslation):
     # sermons_db.append(sermon)
     # return {"sucess": True, "sermon": sermon}
 
+
+@app.put("/sermons/{sermon_id}")
+def update_sermon(sermon_id: int, data: SermonUpdate):
+    """Update a sermon's content"""
+    try:
+        db_connection = get_db_connection()
+        db_cursor = db_connection.cursor()
+
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        db_cursor.execute("""
+            UPDATE sermons SET content = ?, last_edited = ? WHERE id = ?
+        """, (data.content, current_time, sermon_id))
+        db_connection.commit()
+
+        rows_updated = db_cursor.rowcount
+        db_connection.close()
+
+        if rows_updated > 0:
+            return {"success": True}
+        else:
+            return {"success": False, "error": "Sermon not found"}
+    except Exception as e:
+        print(f"Error updating sermon: {e}")
+        return {"success": False, "error": str(e)}
+    
 
 @app.delete("/sermons/{sermon_id}")
 def delete_sermon(sermon_id: int):
